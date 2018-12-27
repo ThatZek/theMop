@@ -1,0 +1,141 @@
+const Discord = require("discord.js");
+const config = require("../../config.json");
+const vars = require("./raidstatuses.json");
+const endafk = require('./endafk.js')
+module.exports.run = async (client, msg, args) => {
+    if (args[0] === undefined || args[0] === null) return msg.reply('You need to specify `CULT` or `VOID`!')
+    let arg = args[0].toLowerCase();
+    if(arg !== 'cult' && arg !== 'void') return msg.reply('You need to specify `CULT` or `VOID`!')
+    let testRunLead = msg.author.id;
+
+    //both
+    const key = '527306552789696532';
+    const knight = '527307396536598550';
+    const pally = '527307396977000458';
+    const priest = '527307396893376516';
+    const warrior = '527307397006491658';
+    const plane = '527307560408186880';
+    const mseal = '527307649537146910';
+
+    //not both
+    const entity = '527306806821912606';
+    const malus = '527306731315789836';
+    const vial = '527306867760693258';
+
+
+    //command
+    if (arg === 'cult') {
+        let raidNum;
+        if (vars.currentAfk.id === null) {
+            vars.currentAfk.id = "pending";
+            if(vars.currentLeads.lead1 === null) {
+                vars.currentLeads.lead1 = msg.author.id;
+                
+            }else if(vars.currentLeads.lead2 === null) {
+                vars.currentLeads.lead2 = msg.author.id;
+                
+            }else {
+                return msg.relpy('Our Raiding servers are already full!')
+            }
+            client.channels.get(config.output).send({
+                embed: {
+                    color: 16312092,
+                    title: 'cult AFK starting!',
+                    description: '<@' + msg.author.id + `> is starting an AFK check!  Join queue then react with ${client.emojis.get(malus)} to join!`
+                }
+            }).then(async msg => {
+                let tempAfk = msg.id;
+                vars.currentAfk.id = msg.id;
+                await msg.react(client.emojis.get(malus))
+                await msg.react(client.emojis.get(key))
+                await msg.react(client.emojis.get(knight))
+                await msg.react(client.emojis.get(pally))
+                await msg.react(client.emojis.get(warrior))
+                await msg.react(client.emojis.get(priest))
+                await msg.react(client.emojis.get(mseal))
+                const filter = (reaction, user) => reaction.emoji.id === malus && user.id !== '480772132456890379' || reaction.emoji.name === '❌' && user.id === testRunLead || reaction.emoji.id === key && user.id !== '480772132456890379'
+                const collector = msg.createReactionCollector(filter, { time: 2147483647 })
+                collector.on('collect', r => {
+                    if (vars.currentAfk !== tempAfk) return collector.stop();
+                    if (r.emoji.id === malus) {
+                        console.log(`${r.users.last().id}`)
+                        //testRunUsers.push(r.users.last().id)
+                    } else if (r.emoji.name === '❌') {
+                        //endAfk(msg);
+                        collector.stop();
+                    } else if (r.emoji.id === '514208936874737675') {
+                        msg.reply(r.users.last().id)
+                        //testHasKey.push(r.users.last().id)
+                    }
+                });
+                collector.on('end', collected => {
+                    if (currentAfk === vars.currentAfk) {
+                        //let outputRL = rl;
+                        //endAfk(msg, outputRL, collector);
+                    }
+                });
+
+            })
+        } else {
+            msg.reply('There is already an afk check up!').catch(console.error)
+        }
+    }else if (arg === 'void') {
+        let keyReacts = [];
+        if (vars.currentAfk.id === null) {
+            vars.currentAfk.id = "pending";
+            vars.currentAfk.commandChan = msg.channel.id;
+            if(vars.currentLeads.raid1 === null) {
+                vars.currentLeads.raid1 = msg.author.id;
+                raidNum = "raid1";
+                vars.currentAfk.raidNum = "raid1";
+            }else if(vars.currentLeads.raid2 === null) {
+                vars.currentLeads.raid2 = msg.author.id;
+                raidNum = "raid2";
+                vars.currentAfk.raidNum = "raid2";
+            }else {
+                return msg.relpy('Our Raiding servers are already full!')
+            }
+            vars.currentRaids[raidNum].type = "void";
+            client.channels.get(config.output).send({
+                embed: {
+                    color: 3447003,
+                    title: 'VOID AFK STARTING',
+                    description: '<@' + msg.author.id + `> is starting an AFK check!  Join queue then react with ${client.emojis.get(entity)} to join!`
+                }
+            }).then(async msg => {
+                let tempAfk = msg.id;
+                vars.currentAfk.id = msg.id;
+                const filter = (reaction, user) => reaction.emoji.id === entity && user.id !== '519676168207859722' || reaction.emoji.id === key && user.id !== '519676168207859722' || reaction.emoji.id === vial && user.id !== '519676168207859722'
+                const collector = msg.createReactionCollector(filter)
+                collector.on('collect', r => {
+                    if (vars.currentAfk.id !== tempAfk) return collector.stop();
+                    if (r.emoji.id === entity) {
+                        let user = r.users.last();
+                        vars.currentRaiders[raidNum].push(r.users.last().id)
+                    } else if (r.emoji.id === key) {
+                        vars.keyReacts[raidNum].push(r.users.last().id)
+                    } else if (r.emoji.id === vial) {
+                        vars.vialReacts[raidNum].push(r.users.last().id)
+                    }
+                });
+                await msg.react(client.emojis.get(entity))
+                await msg.react(client.emojis.get(vial))
+                await msg.react(client.emojis.get(key))
+                await msg.react(client.emojis.get(knight))
+                await msg.react(client.emojis.get(pally))
+                await msg.react(client.emojis.get(warrior))
+                await msg.react(client.emojis.get(priest))
+                await msg.react(client.emojis.get(mseal))
+            })
+        } else {
+            msg.reply('There is already an afk check up!').catch(console.error)
+        }
+    }
+}
+module.exports.help = {
+    name: 'startafk',
+    role: config.leadrole,
+    usage: '`Type`',
+    desc: `Starts an afk check`,
+    example: 'cult'
+}
