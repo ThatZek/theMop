@@ -39,7 +39,7 @@ client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
     console.log('Current prefix is: ' + prefix)
     console.log('Current output chanel is:' + output)
-    client.user.setActivity('BETA TESTING', { type: "PLAYING" });
+    client.user.setActivity('WITH MOPS', { type: "PLAYING" });
 });
 
 //functions
