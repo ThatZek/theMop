@@ -50,11 +50,11 @@ module.exports.run = async (client, msg, args) => {
             }).then(async msg => {
                 let tempAfk = msg.id;
                 vars.currentAfk.id = msg.id;
-                const filter = (reaction, user) => reaction.emoji.id === entity && user.id !== '519676168207859722' || reaction.emoji.id === key && user.id !== '519676168207859722'
+                const filter = (reaction, user) => reaction.emoji.id === malus && user.id !== '519676168207859722' || reaction.emoji.id === key && user.id !== '519676168207859722'
                 const collector = msg.createReactionCollector(filter)
                 collector.on('collect', r => {
                     if (vars.currentAfk.id !== tempAfk) return collector.stop();
-                    if (r.emoji.id === entity) {
+                    if (r.emoji.id === malus) {
                         let user = r.users.last();
                         vars.currentRaiders[raidNum].push(r.users.last().id)
                     } else if (r.emoji.id === key) {

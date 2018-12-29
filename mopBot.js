@@ -52,7 +52,7 @@ client.on('message', msg => {
         if (!msg.member.roles.has(veriRole)) {
 			v.verify(msg.author, msg.guild, msg.member, client)
 		}
-		msg.delete()
+		msg.delete();
 	}else {
 		msg.delete();
 	}
