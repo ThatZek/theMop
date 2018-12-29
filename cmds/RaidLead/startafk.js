@@ -43,7 +43,7 @@ module.exports.run = async (client, msg, args) => {
             vars.currentRaids[raidNum].type = "cult";
             client.channels.get(config.output).send({
                 embed: {
-                    color: 3447003,
+                    color: 16312092,
                     title: 'CULT AFK STARTING',
                     description: '<@' + msg.author.id + `> is starting an AFK check!  Join queue then react with ${client.emojis.get(entity)} to join!`
                 }
