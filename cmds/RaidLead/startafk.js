@@ -48,8 +48,7 @@ module.exports.run = async (client, msg, args) => {
                     title: 'CULT AFK STARTING',
                     description: '<@' + msg.author.id + `> is starting an AFK check!  Join queue then react with ${client.emojis.get(entity)} to join!`
                 }
-            })
-        }).then(async msg => {
+            }).then(async msg => {
                 let tempAfk = msg.id;
                 vars.currentAfk.id = msg.id;
                 const filter = (reaction, user) => reaction.emoji.id === malus && user.id !== '519676168207859722' || reaction.emoji.id === key && user.id !== '519676168207859722'
@@ -71,6 +70,7 @@ module.exports.run = async (client, msg, args) => {
                 await msg.react(client.emojis.get(priest))
                 await msg.react(client.emojis.get(mseal))
             })
+        })
         } else {
             msg.reply('There is already an afk check up!').catch(console.error)
         }
