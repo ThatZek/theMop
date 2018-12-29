@@ -22,18 +22,23 @@ module.exports.run = async (client, msg, args) => {
                 }
             })
         })
-        client.channels.get('528696742569574411').send('pending').then(m => { 
+        vars.currentRaiders[raidNum] = [];
+        vars.currentLeads[raidNum] = [];
+        vars.currentRaids[raidNum].afkid = null;
+        let vc = client.channels.get(config[raidNum])
+        let toMention = [];
+        vc.members.map(member => toMention.push('<@' + member.user.id + '>'))
+        client.channels.get('528696742569574411').send(toMention.toString()).then(m => { 
             m.edit({
                 embed: {
                     title: `Leader Vote`,
                     description: '<@' + lead + '> organized the last run. Please vote on how he did. If you have any negative feedback please let us know what it is in #leader-feedback'
                 }
             })
+        }).then(async m => {
+            await m.react('⬆')
+            await m.react('⬇')
         })
-        vars.currentRaiders[raidNum] = [];
-        vars.currentLeads[raidNum] = [];
-        vars.currentRaids[raidNum].afkid = null;
-        let vc = client.channels.get(config[raidNum])
         vc.members.map(member => member.setVoiceChannel(config.queue))
     }else {
         msg.reply('There is not currently a run going in that channel!')
