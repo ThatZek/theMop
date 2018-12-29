@@ -8,9 +8,7 @@ module.exports.run = async (client, msg, args) => {
             const member = msg.guild.member(user);
             if (member) {
                 member.kick(reason).then(() => {
-                    member.user.send(`You have been kicked for: ${reason}`).catch(err => {
-                        msg.reply('I was unable to send a message to the member')
-                    })
+                    msg.reply(`Successfully kicked ${user.tag}`);
                     client.channels.get(config.Banlog).send({
                         embed: {
                         color: 16312092,
