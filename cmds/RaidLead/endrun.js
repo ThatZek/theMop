@@ -34,7 +34,7 @@ module.exports.run = async (client, msg, args) => {
         vars.currentLeads[raidNum] = [];
         vars.currentRaids[raidNum].afkid = null;
         let vc = client.channels.get(config[raidNum])
-        vc.members.setVoiceChannel(config.queue)
+        vc.members.map(member => member.setVoiceChannel(config.queue))
     }else {
         msg.reply('There is not currently a run going in that channel!')
     }
