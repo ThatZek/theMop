@@ -11,12 +11,13 @@
     "currentRaids": {
         "raid1": {
             "type": null,
-            "startTime": null
-
+            "startTime": null,
+            "afkid": null
         },
         "raid2": {
             "type": null,
-            "startTime": null
+            "startTime": null,
+            "afkid": null
         }
     },
     "currentRaiders": {

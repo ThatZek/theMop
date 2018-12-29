@@ -11,7 +11,7 @@ module.exports.run = async (client, msg, args) => {
         if (vars.currentAfk.id !== null) {
                 let thisAfk = vars.currentAfk.id;
                 vars.currentAfk.id = null;
-                let raidNum = vars.currentAfk.raidNum;
+                let raidNum = vars.currentAfk[raidNum];
                 console.log(raidNum)
                 client.channels.get(config.output).fetchMessage(thisAfk).then(m => {
                     m.edit({
@@ -20,8 +20,10 @@ module.exports.run = async (client, msg, args) => {
                             title: `THIS RUN IS UNDERWAY`,
                             description: 'You missed the AFK check!  Make sure to join queue and react next time!'
                         }
+                    }).then(m => {
+                        vars.currentRaids[raidNum].afkid = m.id
                     })
-                });
+                })
                 for (var i = 0; i < vars.currentRaiders[raidNum].length; i++) {
                     m.guild.members.get(vars.currentRaiders[raidNum][i]).setVoiceChannel(config[raidNum]);
                 }
