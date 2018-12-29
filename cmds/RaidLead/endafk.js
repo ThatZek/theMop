@@ -13,8 +13,8 @@ module.exports.run = async (client, msg, args) => {
                 let keyArray = vars.keyReacts[raidNum];
                 let vialArray = vars.keyReacts[raidNum];
                 console.log(raidNum)
-                client.channels.get(config.output).fetchMessage(thisAfk).then(m => {
-                    m.edit({
+                client.channels.get(config.output).fetchMessage(thisAfk).then(msg => {
+                    msg.edit({
                         embed: {
                             color: 3447003,
                             title: `THIS RUN IS UNDERWAY`,
