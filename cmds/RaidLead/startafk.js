@@ -88,10 +88,11 @@ module.exports.run = async (client, msg, args) => {
                 raidNum = "raid2";
                 vars.currentAfk.raidNum = "raid2";
             }else {
-                return msg.relpy('Our Raiding servers are already full!')
+                return msg.reply('Our Raiding servers are already full!')
             }
-            vars.currentRaids[raidNum].type = "void";
-            client.channels.get(config.output).send({
+            vars.currentRaids[raidNum].type = "cult";
+            client.channels.get(config.output).send('@here').then(m => {
+                m.edit({
                 embed: {
                     color: 1769581,
                     title: 'VOID AFK STARTING',
@@ -122,6 +123,7 @@ module.exports.run = async (client, msg, args) => {
                 await msg.react(client.emojis.get(priest))
                 await msg.react(client.emojis.get(mseal))
             })
+        })
         } else {
             msg.reply('There is already an afk check up!').catch(console.error)
         }
