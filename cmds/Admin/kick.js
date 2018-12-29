@@ -9,7 +9,9 @@ module.exports.run = async (client, msg, args) => {
             if (member) {
                 member.kick(reason).then(() => {
                     msg.reply(`Successfully kicked ${user.tag}`);
-                    user.send(`You have been kicked for: ${reason}`)
+                    member.user.send(`You have been kicked for: ${reason}`).catch(err => {
+                        msg.reply('I was unable to send a message to the member')
+                    })
                     client.channels.get(config.Banlog).send({
                         embed: {
                         color: 16312092,
