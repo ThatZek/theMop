@@ -9,7 +9,7 @@ module.exports.run = async (client, msg, args) => {
         if (vars.currentAfk.id !== null) {
                 let thisAfk = vars.currentAfk.id;
                 vars.currentAfk.id = null;
-                let raidNum = vars.currentAfk[raidNum];
+                let raidNum = vars.currentAfk.raidNum;
                 let keyArray = vars.keyReacts[raidNum];
                 let vialArray = vars.keyReacts[raidNum];
                 console.log(raidNum)
