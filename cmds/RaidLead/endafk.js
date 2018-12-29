@@ -13,8 +13,8 @@ module.exports.run = async (client, msg, args) => {
                 let keyArray = vars.keyReacts[raidNum];
                 let vialArray = vars.keyReacts[raidNum];
                 console.log(raidNum)
-                client.channels.get(config.output).fetchMessage(thisAfk).then(msg => {
-                    msg.edit({
+                client.channels.get(config.output).fetchMessage(thisAfk).then(m => {
+                    m.edit({
                         embed: {
                             color: 3447003,
                             title: `THIS RUN IS UNDERWAY`,
@@ -25,7 +25,7 @@ module.exports.run = async (client, msg, args) => {
                     })
                 })
                 for (var i = 0; i < vars.currentRaiders[raidNum].length; i++) {
-                    m.guild.members.get(vars.currentRaiders[raidNum][i]).setVoiceChannel(config[raidNum]);
+                    msg.guild.members.get(vars.currentRaiders[raidNum][i]).setVoiceChannel(config[raidNum]);
                 }
                 if (keyArray.length > 0) {
                     for (var i = 0; i < keyArray.length; i++) {
