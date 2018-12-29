@@ -3,7 +3,7 @@ const config = require("../../config.json");
 const vars = require("./raidstatuses.json");
 module.exports.run = async (client, msg, args) => {
     if(vars.currentAfk.id !== null) {
-        client.channels.get(output).fetchMessage(currentAfk).then(msg => {
+        client.channels.get(config.output).fetchMessage(vars.currentAfk.id).then(msg => {
             msg.edit({
                 embed: {
                     color: 3447003,
@@ -13,8 +13,14 @@ module.exports.run = async (client, msg, args) => {
             });
         });
         vars.currentAfk.id = null;
-        vars.currentAfk.type = null;
+        let raidNum = vars.currentAfk.raidNum;
+        vars.currentAfk.raidNum = null;
         vars.currentAfk.commandChan = null;
+        vars.currentRaids[raidNum].type = null;
+        vars.currentRaids[raidNum].afkid = null;
+        vars.currentRaids[raidNum].startTime = null;
+        vars.keyReacts[raidNum] = null;
+        vars.vialReacts[raidNum] = null;
 }else return msg.reply('There is no AFK check currently up!')
 }
 module.exports.help = {

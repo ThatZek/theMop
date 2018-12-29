@@ -6,6 +6,7 @@ const config = require("./config.json")
 const v = require('./verify.js')
 const fs = require("fs")
 const runVars = require('./cmds/RaidLead/raidstatuses.json')
+const Git = require('simple-git');
 
 //vars
 var prefix = config.prefix;
