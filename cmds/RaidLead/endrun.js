@@ -23,7 +23,7 @@ module.exports.run = async (client, msg, args) => {
             })
         })
         vars.currentRaiders[raidNum] = [];
-        vars.currentLeads[raidNum] = [];
+        vars.currentLeads[raidNum] = null;
         vars.currentRaids[raidNum].afkid = null;
         let vc = client.channels.get(config[raidNum])
         let toMention = [];

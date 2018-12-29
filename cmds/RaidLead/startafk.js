@@ -38,13 +38,13 @@ module.exports.run = async (client, msg, args) => {
                 raidNum = "raid2";
                 vars.currentAfk.raidNum = "raid2";
             }else {
-                return msg.relpy('Our Raiding servers are already full!')
+                return msg.reply('Our Raiding servers are already full!')
             }
             vars.currentRaids[raidNum].type = "cult";
             client.channels.get(config.output).send('@here').then(m => {
                 m.edit({
                 embed: {
-                    color: 16312092,
+                    color: 16711680,
                     title: 'CULT AFK STARTING',
                     description: '<@' + msg.author.id + `> is starting an AFK check!  Join queue then react with ${client.emojis.get(entity)} to join!`
                 }
@@ -93,7 +93,7 @@ module.exports.run = async (client, msg, args) => {
             vars.currentRaids[raidNum].type = "void";
             client.channels.get(config.output).send({
                 embed: {
-                    color: 3447003,
+                    color: 1769581,
                     title: 'VOID AFK STARTING',
                     description: '<@' + msg.author.id + `> is starting an AFK check!  Join queue then react with ${client.emojis.get(entity)} to join!`
                 }
