@@ -44,14 +44,19 @@ client.on('ready', () => {
 
 //functions
 client.on('message', msg => {
+	if (msg.content.startsWith(config.prefix)) return;
     const args = msg.content.slice(prefix.length).split(/ +/);
-    const command = args.shift().toLowerCase();
+	const command = args.shift().toLowerCase();
+	if (msg.channel.id === '520093819228651549') {
     if (msg.content.toLowerCase() === 'verify') {
         if (!msg.member.roles.has(veriRole)) {
-            v.verify(msg.author, msg.guild, msg.member, client)
-        }
-        msg.delete()
-    }
+			v.verify(msg.author, msg.guild, msg.member, client)
+		}
+		msg.delete()
+	}else {
+		msg.delete();
+	}
+}
     const cmd = client.commands.get(command);
     if (cmd) {
 		if (cmd.help.role) {
