@@ -9,7 +9,6 @@ module.exports.run = async (client, msg, args) => {
             if (member) {
                 member.ban(reason).then(() => {
                     msg.reply(`Successfully banned ${user.tag}`);
-                    user.send(`You have been banned for: ${reason}`)
                     client.channels.get(config.Banlog).send({
                         embed: {
                         color: 16312092,

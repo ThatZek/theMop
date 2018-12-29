@@ -8,7 +8,6 @@ module.exports.run = async (client, msg, args) => {
             const member = msg.guild.member(user);
             if (member) {
                 member.kick(reason).then(() => {
-                    msg.reply(`Successfully kicked ${user.tag}`);
                     member.user.send(`You have been kicked for: ${reason}`).catch(err => {
                         msg.reply('I was unable to send a message to the member')
                     })
