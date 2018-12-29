@@ -11,7 +11,7 @@ module.exports.run = async (client, msg, args) => {
             } else if (!member.roles.has(rl.id)) {
                 member.removeRole(trl)
                 member.addRole(rl)
-                let name = member.nickname.slice(1);
+                let name = member.displayName.slice(1);
                 member.setNickname("'" + name)
                 client.channels.get(config.Promotelog).send('Promoted <@' + msg.mentions.users.first().id + '> to Raid Leader', client)
                 return msg.react('✅');

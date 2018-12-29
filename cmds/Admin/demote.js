@@ -10,13 +10,13 @@ module.exports.run = async (client, msg, args) => {
                 msg.reply('That person can\'t be demoted!')
             } else if (member.roles.has(trl.id)) {
                 member.removeRole(trl)
-                member.setNickname(member.nickname.slice(1))
+                member.setNickname(member.displayName.slice(1))
                 client.channels.get(config.Promotelog).send('Demoted <@' + msg.mentions.users.first().id + '> from Trial Raid Leader', client)
                 return msg.react('✅');
             }else if (member.roles.has(rl.id)) {
                 member.removeRole(rl)
                 member.addRole(trl)
-                let name = member.nickname.slice(1);
+                let name = member.displayName.slice(1);
                 member.setNickname("," + name)
                 client.channels.get(config.Promotelog).send('Demoted <@' + msg.mentions.users.first().id + '> from Raid Leader', client)
                 return msg.react('✅');
