@@ -41,13 +41,15 @@ module.exports.run = async (client, msg, args) => {
                 return msg.relpy('Our Raiding servers are already full!')
             }
             vars.currentRaids[raidNum].type = "cult";
-            client.channels.get(config.output).send({
+            client.channels.get(config.output).send('@here').then(m => {
+                m.edit({
                 embed: {
                     color: 16312092,
                     title: 'CULT AFK STARTING',
                     description: '<@' + msg.author.id + `> is starting an AFK check!  Join queue then react with ${client.emojis.get(entity)} to join!`
                 }
-            }).then(async msg => {
+            })
+        }).then(async msg => {
                 let tempAfk = msg.id;
                 vars.currentAfk.id = msg.id;
                 const filter = (reaction, user) => reaction.emoji.id === malus && user.id !== '519676168207859722' || reaction.emoji.id === key && user.id !== '519676168207859722'

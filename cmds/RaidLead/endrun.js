@@ -34,10 +34,10 @@ module.exports.run = async (client, msg, args) => {
                     title: `Leader Vote`,
                     description: '<@' + lead + '> organized the last run. Please vote on how he did. If you have any negative feedback please let us know what it is in #leader-feedback'
                 }
+            }).then(async msg => {
+                await msg.react('⬆')
+                await msg.react('⬇')
             })
-        }).then(async m => {
-            await m.react('⬆')
-            await m.react('⬇')
         })
         vc.members.map(member => member.setVoiceChannel(config.queue))
     }else {
