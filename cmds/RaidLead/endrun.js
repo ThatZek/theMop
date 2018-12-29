@@ -3,6 +3,7 @@ const config = require("../../config.json");
 const vars = require("./raidstatuses.json");
 module.exports.run = async (client, msg, args) => {
     let raidNum;
+    const lead = msg.author.id;
     if (args[0] === '1') {
         raidNum = 'raid1';
     } else if(args[0] === '2'){
@@ -10,10 +11,9 @@ module.exports.run = async (client, msg, args) => {
     }else return msg.reply('You need to specify a channel!')
     if (vars.currentRaids[raidNum].type !== null) {
         vars.currentRaids[raidNum].type = null;
-        vars.currentRaiders = [];
         vars.keyReacts[raidNum] = [];
         vars.vialReacts[raidNum] = [];
-        client.channels.get(config[raidNum]).fetchMessage(vars.currentRaids[raidNum].afkid).then(m => {
+        client.channels.get(config.output).fetchMessage(vars.currentRaids[raidNum].afkid).then(m => {
             m.edit({
                 embed: {
                     color: 3447003,
@@ -22,6 +22,16 @@ module.exports.run = async (client, msg, args) => {
                 }
             })
         })
+        client.channels.get('528696742569574411').send('pending').then(m => { 
+            m.edit({
+                embed: {
+                    title: `Leader Vote`,
+                    description: '<@' + lead + '> organized the last run. Please vote on how he did. If you have any negative feedback please let us know what it is in #leader-feedback'
+                }
+            })
+        })
+        vars.currentRaiders[raidNum] = [];
+        vars.currentLeads[raidNum] = [];
         vars.currentRaids[raidNum].afkid = null;
         let vc = client.channels.get(config[raidNum])
         vc.members.setVoiceChannel(config.queue)

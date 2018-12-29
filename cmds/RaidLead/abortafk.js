@@ -19,8 +19,8 @@ module.exports.run = async (client, msg, args) => {
         vars.currentRaids[raidNum].type = null;
         vars.currentRaids[raidNum].afkid = null;
         vars.currentRaids[raidNum].startTime = null;
-        vars.keyReacts[raidNum] = null;
-        vars.vialReacts[raidNum] = null;
+        vars.keyReacts[raidNum] = [];
+        vars.vialReacts[raidNum] = [];
 }else return msg.reply('There is no AFK check currently up!')
 }
 module.exports.help = {
