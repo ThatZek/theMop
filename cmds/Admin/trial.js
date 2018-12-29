@@ -10,7 +10,9 @@ module.exports.run = async (client, msg, args) => {
                 msg.reply('That person can\'t be trialed!')
             } else {
                 member.addRole(trl)
-                client.channels.get(config.Promotelog).send('Promoted <@' + msg.mentions.users.first().id + '> to trial scout', client)
+                let name = member.nickname;
+                member.setNickname(','+ name)
+                client.channels.get(config.Promotelog).send('Promoted <@' + msg.mentions.users.first().id + '> to Trial Raid Leader', client)
                 return msg.react('✅');
             }
         } else {
