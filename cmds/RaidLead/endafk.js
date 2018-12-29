@@ -4,14 +4,14 @@ const vars = require("./raidstatuses.json")
 
 module.exports.run = async (client, msg, args) => {
     console.log(vars.keyReacts)
-    let keyArray = vars.keyReacts[raidNum];
-    let vialArray = vars.keyReacts[raidNum];
     let vialMsg;
     let keyMsg;
         if (vars.currentAfk.id !== null) {
                 let thisAfk = vars.currentAfk.id;
                 vars.currentAfk.id = null;
                 let raidNum = vars.currentAfk[raidNum];
+                let keyArray = vars.keyReacts[raidNum];
+                let vialArray = vars.keyReacts[raidNum];
                 console.log(raidNum)
                 client.channels.get(config.output).fetchMessage(thisAfk).then(m => {
                     m.edit({
