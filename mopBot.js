@@ -76,7 +76,7 @@ if (!msg.content.startsWith(config.prefix)) return;
 			}
 		}
         cmd.run(client, msg, args);
-        msg.react('✅');
+        //msg.react('✅');
 	}
 });
 
