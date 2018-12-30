@@ -13,7 +13,7 @@ module.exports.run = async (client, msg, args) => {
         if (i === 1) {
             users = people[i-1]
         } else {
-            users = users + '\n' +  people[i-1];
+            users = users + '\n ' +  people[i-1];
         }
     }
     msg.channel.send({
