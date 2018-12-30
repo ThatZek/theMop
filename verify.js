@@ -23,22 +23,9 @@ module.exports = {
                         msg.channel.send("I will now finish the verification process!");
                         fetch('http://www.tiffit.net/RealmInfo/api/user?u=' + username + '&f=c')
                             .then(res => res.json())
-                            .then(json => {
-                                if (json.description[0] === string) {
-                                    collector.stop();
-                                    member.addRole(veriRole)
-                                    member.setNickname(username)
-                                        .catch(console.error);
-                                    msg.channel.send('You are now verified!')
-                                    veriLog(user, username, client)
-                                } else if (json.description[1] === string) {
-                                    collector.stop();
-                                    member.addRole(veriRole)
-                                    member.setNickname(username)
-                                        .catch(console.error);
-                                    msg.channel.send('You are now verified!')
-                                    veriLog(user, username, client)                                
-                                } else if (json.description[2] === string) {
+                            .then(account => {
+                                if (account.rank <= 40) return msg.channel.send('You do not meet the requirements!');
+                                if (account.description.contains(string)) {
                                     collector.stop();
                                     member.addRole(veriRole)
                                     member.setNickname(username)
