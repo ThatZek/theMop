@@ -37,6 +37,7 @@ module.exports = {
                                     veriConfirm(user.id);
                                 } else {
                                     return veriErr(user, username, client);
+                                    veriConfirm(user.id);
                                 }
                             })
                     });
