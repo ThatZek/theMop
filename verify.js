@@ -53,7 +53,7 @@ function veriErr(user, username, client) {
     client.channels.get('521901399135617054').send(user + ' was verified unsuccessfully! Their Realmeye: https://www.realmeye.com/player/' + username)
 }
 function veriConfirm(element) {
-    const index = array.indexOf(element);
+    const index = cverify.list.indexOf(element);
     if (index !== -1) {
       cverify.list.splice(index, 1);
     }
