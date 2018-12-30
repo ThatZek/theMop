@@ -7,6 +7,7 @@ const v = require('./verify.js')
 const fs = require("fs")
 const runVars = require('./cmds/RaidLead/raidstatuses.json')
 const Git = require('simple-git');
+const sysinfo = require('systeminformation')
 
 //vars
 var prefix = config.prefix;
