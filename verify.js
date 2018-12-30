@@ -27,7 +27,7 @@ module.exports = {
                             .then(account => {
                                 if (account.rank <= 40) return msg.channel.send('You do not meet the requirements!');
                                 const description = account.description
-                                if (description.contains(string)) {
+                                if (description.includes(string)) {
                                     collector.stop();
                                     member.addRole(veriRole)
                                     member.setNickname(account.name)

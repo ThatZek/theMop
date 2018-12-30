@@ -29,7 +29,7 @@ module.exports.run = async (client, msg, args) => {
                 }
                 if (keyArray.length > 0) {
                     for (var i = 0; i < keyArray.length; i++) {
-                        if (i = 1) {
+                        if (i === 1) {
                             keyMsg = '<@' + keyArray[i - 1] + '>'
                         }else {
                         keyMsg = keyMsg + '\n' + '<@' + keyArray[i - 1] + '>'
@@ -47,7 +47,7 @@ module.exports.run = async (client, msg, args) => {
         if (vars.currentRaids[raidNum].type === 'void') {
             if (vialArray.length > 0) {
                 for (var i = 0; i < vialArray.length; i++) {
-                    if (i = 1) {
+                    if (i === 1) {
                         vialMsg = '<@' + vialArray[i - 1] + '>'
                     }else {
                     vialMsg = vialMsg + '\n' + '<@' + vialArray[i - 1] + '>'
