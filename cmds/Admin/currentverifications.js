@@ -10,10 +10,10 @@ module.exports.run = async (client, msg, args) => {
     }
     for (var i = 0; i < people.length; i++) {
         console.log(people)
-        if (i === 1) {
-            users = people[i-1]
+        if (i === 0) {
+            users = people[i]
         } else {
-            users = users + '\n ' +  people[i-1];
+            users = users + '\n ' +  people[i];
         }
     }
     msg.channel.send({
