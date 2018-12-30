@@ -18,7 +18,6 @@ module.exports.run = async (client, msg, args) => {
     }
     msg.channel.send({
         embed: {
-            title: 'Verification Statuses',
             description: 'Stats of the verification process',
             fields: [{
                 name: "Number of People Verifying right now.",
