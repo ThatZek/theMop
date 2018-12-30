@@ -9,6 +9,7 @@ module.exports.run = async (client, msg, args) => {
         people.push('<@' + cverify.list[i] + '>')
     }
     for (var i = 0; i < people.length; i++) {
+        console.log(people)
         if (i = 1) {
             users = people[i-1]
         } else {
@@ -17,7 +18,7 @@ module.exports.run = async (client, msg, args) => {
     }
     msg.channel.send({
         embed: {
-            Title: 'Verification Statuses',
+            title: 'Verification Statuses',
             description: 'Stats of the verification process',
             fields: [{
                 name: "Number of People Verifying right now.",
