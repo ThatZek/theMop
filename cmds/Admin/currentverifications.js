@@ -8,12 +8,15 @@ module.exports.run = async (client, msg, args) => {
     for (var i = 0; i < amount; i++) {
         people.push('<@' + cverify.list[i] + '>')
     }
-    for (var i = 0; i < people.length; i++) {
-        console.log(people)
-        if (i === 0) {
-            users = people[i]
-        } else {
-            users = users + '\n ' +  people[i];
+    if (amount === 0) {
+        users = none;
+    }else {
+        for (var i = 0; i < people.length; i++) {
+            if (i === 0) {
+                users = people[i]
+            } else {
+                users = users + '\n ' +  people[i];
+            }
         }
     }
     msg.channel.send({
