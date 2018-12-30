@@ -28,7 +28,7 @@ module.exports = {
                                 if (account.description.contains(string)) {
                                     collector.stop();
                                     member.addRole(veriRole)
-                                    member.setNickname(username)
+                                    member.setNickname(account.name)
                                         .catch(console.error);
                                     msg.channel.send('You are now verified!')
                                     veriLog(user, username, client)
