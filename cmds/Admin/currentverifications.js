@@ -9,7 +9,7 @@ module.exports.run = async (client, msg, args) => {
         people.push('<@' + cverify.list[i] + '>')
     }
     if (amount === 0) {
-        users = 'none';
+        users = 'None';
     }else {
         for (var i = 0; i < people.length; i++) {
             if (i === 0) {
