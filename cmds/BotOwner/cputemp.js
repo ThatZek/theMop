@@ -8,7 +8,7 @@ module.exports.run = async (client, msg, args) => {
         msg.channel.send({
             embed: {
                 title: 'CPU Temp',
-                description: data
+                description: data.main.toString()
             }
         })
     }).catch(error => console.error(error));
