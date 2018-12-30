@@ -16,7 +16,7 @@ module.exports.run = async (client, msg, args) => {
                         description: 'Reason: ' + reason + '\n User: ' + user.tag,
                         author: {
                             name: msg.author.tag,
-                            icon_url: msg.author.icon_url
+                            icon_url: msg.author.avatarURL
                         }
                     }
                 })

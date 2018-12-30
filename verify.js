@@ -2,10 +2,11 @@ const Discord = require("discord.js");
 const fetch = require('node-fetch');
 const config = require("./config.json");
 const bot = require("./mopBot.js")
+const cverify = require("./currentverifications.json")
 
 module.exports = {
     verify: function verify(user, server, member, client) {
-        console.log("got this far")
+        cverify.list.push(user.id)
         const veriRole = server.roles.get(config.member);
         let string = "MOP" + Math.floor(Math.random(11111) * 99999);
         user.send('Please put the following code ALONE in any of your realmeye description lines!')
@@ -32,6 +33,7 @@ module.exports = {
                                         .catch(console.error);
                                     msg.channel.send('You are now verified!')
                                     veriLog(user, username, client)
+                                    veriConfirm(user.id);
                                 } else {
                                     return veriErr(user, username, client);
                                 }
@@ -48,4 +50,10 @@ function veriLog(user, username, client) {
 
 function veriErr(user, username, client) {
     client.channels.get('521901399135617054').send(user + ' was verified unsuccessfully! Their Realmeye: https://www.realmeye.com/player/' + username)
+}
+function veriConfirm(element) {
+    const index = array.indexOf(element);
+    if (index !== -1) {
+      cverify.list.splice(index, 1);
+    }
 }
