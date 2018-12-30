@@ -2,20 +2,22 @@ const Discord = require("discord.js");
 const config = require("../../config.json");
 const cverify = require('../../currentverifications.json')
 module.exports.run = async (client, msg, args) => {
-    let amount = cverify.list.length;
+    let amount = cverify.idlist.length;
     let people = [];
+    let time = [];
     let users;
     for (var i = 0; i < amount; i++) {
-        people.push('<@' + cverify.list[i] + '>')
+        people.push('<@' + cverify.idlist[i] + '>')
+        time.push(cverify.timelist[i])
     }
     if (amount === 0) {
         users = 'None';
     }else {
         for (var i = 0; i < people.length; i++) {
             if (i === 0) {
-                users = people[i]
+                users = people[i] + ', ' + time[i]
             } else {
-                users = users + '\n ' +  people[i];
+                users = users + '\n ' +  people[i] + ', ' + time[i];
             }
         }
     }
@@ -27,7 +29,7 @@ module.exports.run = async (client, msg, args) => {
                 value: amount
               },
               {
-                name: "Users",
+                name: "User Information",
                 value: users
               }
             ],

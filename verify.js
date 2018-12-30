@@ -6,7 +6,8 @@ const cverify = require("./currentverifications.json")
 
 module.exports = {
     verify: function verify(user, server, member, client) {
-        cverify.list.push(user.id)
+        cverify.idlist.push(user.id)
+        cverify.idlist.push(getDateTime());
         const veriRole = server.roles.get(config.member);
         let string = "MOP" + Math.floor(Math.random(11111) * 99999);
         user.send('Please put the following code ALONE in any of your realmeye description lines!')
@@ -54,8 +55,33 @@ function veriErr(user, username, client) {
     client.channels.get('521901399135617054').send(user + ' was verified unsuccessfully! Their Realmeye: https://www.realmeye.com/player/' + username)
 }
 function veriConfirm(element) {
-    const index = cverify.list.indexOf(element);
+    const index = cverify.idlist.indexOf(element);
     if (index !== -1) {
-      cverify.list.splice(index, 1);
+      cverify.idlist.splice(index, 1);
+      cverify.timelist.splice(index, 1)
     }
+}
+function getDateTime() {
+
+    var date = new Date();
+
+    var hour = date.getHours();
+    hour = (hour < 10 ? "0" : "") + hour;
+
+    var min  = date.getMinutes();
+    min = (min < 10 ? "0" : "") + min;
+
+    var sec  = date.getSeconds();
+    sec = (sec < 10 ? "0" : "") + sec;
+
+    var year = date.getFullYear();
+
+    var month = date.getMonth() + 1;
+    month = (month < 10 ? "0" : "") + month;
+
+    var day  = date.getDate();
+    day = (day < 10 ? "0" : "") + day;
+
+    return day + ":" + hour + ":" + min + ":" + sec;
+
 }
