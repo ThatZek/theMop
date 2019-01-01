@@ -7,7 +7,7 @@ const cverify = require("./currentverifications.json")
 module.exports = {
     verify: function verify(user, server, member, client) {
         cverify.idlist.push(user.id)
-        cverify.timelist.push(new Date(Date.now()),);
+        cverify.timelist.push(new Date(Date.now()));
         const veriRole = server.roles.get(config.member);
         let string = "MOP" + Math.floor(Math.random(11111) * 99999);
         user.send('Please put the following code ALONE in any of your realmeye description lines!')
