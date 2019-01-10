@@ -16,7 +16,7 @@ const sequelize = new Sequelize('database', 'user', 'password', {
     operatorsAliases: false,
     storage: 'database.sqlite',
 });
-client.db = sequelize.define('members', {
+client.db = sequelize.define('database', {
     id: {
         type: Sequelize.STRING,
 		unique: true,
