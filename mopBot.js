@@ -27,7 +27,6 @@ client.db = sequelize.define('database', {
 	keyPops: Sequelize.INTEGER,
 	leadRuns: Sequelize.INTEGER,
 	raidRuns: Sequelize.INTEGER,
-	vials: Sequelize.INTEGER,
 });
 
 //vars
