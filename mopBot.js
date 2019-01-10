@@ -95,7 +95,7 @@ if (!msg.content.startsWith(config.prefix)) return;
                 const member = msg.member;
                 //console.log(member.highestRole.position)
 				if (role) {
-					if (role.position > member.highestRole.position) return msg.reply(`You cannot use this command as you do not have the ${role} role`);
+					if (role.position > member.highestRole.position) return msg.reply(`You cannot use this command as you do not have the ${role.name} role`);
 				}
 			}
 		}
