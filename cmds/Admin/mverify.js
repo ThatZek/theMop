@@ -3,7 +3,7 @@ const config = require("../../config.json");
 module.exports.run = async (client, msg, args) => {
     const user = msg.mentions.users.first();
     const member = msg.mentions.members.first();
-    const veriRole = server.roles.get(config.member);
+    const veriRole = msg.guild.roles.get(config.member);
         args.shift()
         const username = args[0];
         member.setNickname(username);
