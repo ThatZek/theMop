@@ -4,8 +4,7 @@ const config = require("./config.json");
 const bot = require("./mopBot.js")
 const cverify = require("./currentverifications.json")
 
-module.exports = {
-    verify: function verify(user, server, member, client) {
+module.exports.verify = async (user, server, member, client) => {
         cverify.idlist.push(user.id)
         cverify.timelist.push(new Date(Date.now()));
         const veriRole = server.roles.get(config.member);
@@ -60,8 +59,7 @@ module.exports = {
                 }
                 )
     }
-}
-
+    
 function veriLog(user, username, client) {
     client.channels.get('521901399135617054').send(user + ' was verified successfully! Their Realmeye: https://www.realmeye.com/player/' + username)
 }
