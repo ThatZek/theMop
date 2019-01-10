@@ -5,7 +5,7 @@ module.exports.run = async (client, msg, args) => {
     const member = msg.mentions.members.first();
         args.shift()
         const username = args[0];
-        member.setnickname(username);
+        member.setNickname(username);
  
 }
 module.exports.help = {
