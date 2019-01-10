@@ -44,6 +44,7 @@ module.exports.verify = async (user, server, member, client) => {
                                             keyPops: 0,
                                             leadRuns: 0,
                                             raidRuns: 0,
+                                            vials: 0,
                                         });
                                         return console.log(`${user.id} was added to the database`)
                                     }

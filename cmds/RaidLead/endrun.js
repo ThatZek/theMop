@@ -39,7 +39,9 @@ module.exports.run = async (client, msg, args) => {
                 await msg.react('⬇')
             })
         })
-        vc.members.map(member => member.setVoiceChannel(config.queue))
+        vc.members.map(member => {
+            member.setVoiceChannel(config.queue)
+        })
     }else {
         msg.reply('There is not currently a run going in that channel!')
     }
