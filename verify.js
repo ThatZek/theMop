@@ -24,7 +24,7 @@ module.exports.verify = async (user, server, member, client) => {
                         msg.channel.send("I will now finish the verification process!");
                         fetch('http://www.tiffit.net/RealmInfo/api/user?u=' + username + '&f=c')
                             .then(res => res.json())
-                            .then(account => {
+                            .then(async account => {
                                 if (account.rank < 20) return msg.channel.send('You do not meet the requirements!');
                                 const description = account.description
                                 if (description.includes(string)) {
