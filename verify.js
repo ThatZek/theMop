@@ -6,7 +6,7 @@ const cverify = require("./currentverifications.json")
 
 module.exports.verify = async (user, server, member, client) => {
         client.guilds.get('486185711272460303').members.get(user.id).then(member => {
-                if (!member.roles.has(client.roles.get('500675441175166998') return user.send('You are not in MCH, please verify there first');
+                if (!member.roles.has(client.roles.get('500675441175166998'))) return user.send('You are not in MCH, please verify there first');
         });
         if (cverify.idlist.includes(user.id)) return (user.send('Please finish the message above!'))
         cverify.idlist.push(user.id)
