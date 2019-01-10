@@ -17,7 +17,7 @@ module.exports.verify = async (user, server, member, client) => {
                 }
             })
                 .then(user.send('Please reply with your ROTMG username once your description has been updated!')
-                )).then(message => {
+                )).then(async message => {
                     const collector = new Discord.MessageCollector(message.channel, m => m.author.id === user.id);
                     collector.on('collect', msg => {
                         let username = msg.content
@@ -59,7 +59,7 @@ module.exports.verify = async (user, server, member, client) => {
                 }
                 )
     }
-    
+
 function veriLog(user, username, client) {
     client.channels.get('521901399135617054').send(user + ' was verified successfully! Their Realmeye: https://www.realmeye.com/player/' + username)
 }
