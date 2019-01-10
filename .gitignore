@@ -2,3 +2,4 @@ config.json
 accrossInstance.json
 node_modules
 .vs
+blacklist.json

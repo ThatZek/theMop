@@ -36,9 +36,24 @@ module.exports = {
                                     msg.channel.send('You are now verified!')
                                     veriLog(user, username, client)
                                     veriConfirm(user.id);
-                                } else {
+                                    try {
+                                        const player = await client.db.create({
+                                            id: user.id,
+                                            realmName: config.factoryPrefix,
+                                            keyPops: 0,
+                                            leadRuns: 0,
+                                            raidRuns: 0,
+                                        });
+                                        return console.log(`${user.id} was added to the database`)
+                                    }
+                                    catch (e) {
+                                        if (e.name === 'SequelizeUniqueConstraintError') {
+                                            return console.log('That id already exists.');
+                                        }
+                                        return console.log('Something went wrong with adding a player.');
+                                    }
+                                }else {
                                     return veriErr(user, username, client);
-                                    veriConfirm(user.id);
                                 }
                             })
                     });
@@ -54,7 +69,7 @@ function veriLog(user, username, client) {
 function veriErr(user, username, client) {
     client.channels.get('521901399135617054').send(user + ' was verified unsuccessfully! Their Realmeye: https://www.realmeye.com/player/' + username)
 }
-function veriConfirm(element) {
+function veriConfirm(element, client) {
     const index = cverify.idlist.indexOf(element);
     if (index !== -1) {
       cverify.idlist.splice(index, 1);

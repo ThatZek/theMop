@@ -8,6 +8,26 @@ const fs = require("fs")
 const runVars = require('./cmds/RaidLead/raidstatuses.json')
 const Git = require('simple-git');
 const sysinfo = require('systeminformation')
+const Sequelize = require('sequelize');
+const sequelize = new Sequelize('database', 'user', 'password', {
+    host: 'localhost',
+    dialect: 'sqlite',
+    logging: false,
+    operatorsAliases: false,
+    storage: 'database.sqlite',
+});
+client.db = sequelize.define('database', {
+    id: {
+        type: Sequelize.STRING,
+		unique: true,
+		primaryKey: true,
+
+    },
+    realmName: Sequelize.STRING,
+	keyPops: Sequelize.STRING,
+	leadRuns: Sequelize.STRING,
+	raidRuns: Sequelize.STRING,
+});
 
 //vars
 var prefix = config.prefix;
