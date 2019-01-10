@@ -36,6 +36,7 @@ module.exports.verify = async (user, server, member, client) => {
                                     msg.channel.send('You are now verified!')
                                     veriLog(user, username, client)
                                     veriConfirm(user.id);
+                                    console.log(client.db)
                                     try {
                                         const player = await client.db.create({
                                             id: user.id,
