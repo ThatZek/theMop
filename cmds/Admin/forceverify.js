@@ -7,7 +7,7 @@ module.exports.run = async (client, msg, args) => {
         if (member) {
                 member.removeRole(memberRole)
                 member.setNickname('')
-                client.channels.get('521901399135617054').send('<@' + msg.mentions.users.first().id + '> has to reverify', client)
+                client.channels.get('532751770234126347').send('<@' + msg.mentions.users.first().id + '> has to reverify', client)
                 return msg.react('✅');
         } else {
                 return msg.reply(' You need to mention someone!');
