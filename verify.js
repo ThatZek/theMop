@@ -38,7 +38,7 @@ module.exports.verify = async (user, server, member, client) => {
                                     try {
                                         const player = await client.db.create({
                                             id: user.id,
-                                            realmName: config.factoryPrefix,
+                                            realmName: account.name,
                                             keyPops: 0,
                                             leadRuns: 0,
                                             raidRuns: 0,
@@ -61,11 +61,11 @@ module.exports.verify = async (user, server, member, client) => {
     }
 
 function veriLog(user, username, client) {
-    client.channels.get('521901399135617054').send(user + ' was verified successfully! Their Realmeye: https://www.realmeye.com/player/' + username)
+    client.channels.get('532751770234126347').send(user + ' was verified successfully! Their Realmeye: https://www.realmeye.com/player/' + username)
 }
 
 function veriErr(user, username, client) {
-    client.channels.get('521901399135617054').send(user + ' was verified unsuccessfully! Their Realmeye: https://www.realmeye.com/player/' + username)
+    client.channels.get('532751770234126347').send(user + ' was verified unsuccessfully! Their Realmeye: https://www.realmeye.com/player/' + username)
 }
 function veriConfirm(element, client) {
     const index = cverify.idlist.indexOf(element);
