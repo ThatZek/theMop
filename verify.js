@@ -26,7 +26,7 @@ module.exports = {
                         fetch('http://www.tiffit.net/RealmInfo/api/user?u=' + username + '&f=c')
                             .then(res => res.json())
                             .then(account => {
-                                if (account.rank <= 40) return msg.channel.send('You do not meet the requirements!');
+                                if (account.rank < 20) return msg.channel.send('You do not meet the requirements!');
                                 const description = account.description
                                 if (description.includes(string)) {
                                     collector.stop();
