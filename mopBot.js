@@ -61,14 +61,14 @@ client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
     console.log('Current prefix is: ' + prefix)
     console.log('Current output chanel is:' + output)
-    client.user.setActivity('WITH MOPS', { type: "PLAYING" });
+    client.user.setActivity('WITH A DILDO', { type: "PLAYING" });
 });
 
 //functions
 client.on('message', msg => {
     const args = msg.content.slice(prefix.length).split(/ +/);
 	const command = args.shift().toLowerCase();
-	if (msg.channel.id === '520093819228651549') {
+	if (msg.channel.id === '525168788895825920') {
     if (msg.content.toLowerCase() === 'verify') {
         if (!msg.member.roles.has(veriRole)) {
 			v.verify(msg.author, msg.guild, msg.member, client)
