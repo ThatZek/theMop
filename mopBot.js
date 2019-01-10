@@ -61,7 +61,7 @@ client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
     console.log('Current prefix is: ' + prefix)
     console.log('Current output chanel is:' + output)
-    client.user.setActivity('WITH A DILDO', { type: "PLAYING" });
+    client.user.setActivity('YOUR WINDOWS CAREFULLY O.O', { type: "WATCHING" });
 });
 
 //functions
