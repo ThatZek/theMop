@@ -39,7 +39,7 @@ module.exports.verify = async (user, server, member, client) => {
                                     try {
                                         const player = await client.db.create({
                                             id: user.id,
-                                            realmName: account.name,
+                                            realmName: username,
                                             keyPops: 0,
                                             leadRuns: 0,
                                             raidRuns: 0,
