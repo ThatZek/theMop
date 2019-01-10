@@ -24,9 +24,9 @@ client.db = sequelize.define('database', {
 
     },
     realmName: Sequelize.STRING,
-	keyPops: Sequelize.STRING,
-	leadRuns: Sequelize.STRING,
-	raidRuns: Sequelize.STRING,
+	keyPops: Sequelize.NUMBER,
+	leadRuns: Sequelize.NUMBER,
+	raidRuns: Sequelize.NUMBER,
 });
 
 //vars
