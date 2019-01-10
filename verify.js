@@ -50,7 +50,7 @@ module.exports.verify = async (user, server, member, client) => {
                                         if (e.name === 'SequelizeUniqueConstraintError') {
                                             return console.log('That id already exists.');
                                         }
-                                        return console.log('Something went wrong with adding a player.');
+                                        return console.log(e);
                                     }
                                 }else {
                                     return veriErr(user, username, client);
