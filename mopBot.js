@@ -23,10 +23,10 @@ client.db = sequelize.define('database', {
 		primaryKey: true,
 
     },
-    realmName: Sequelize.STRING,
-	keyPops: Sequelize.NUMERIC,
-	leadRuns: Sequelize.NUMERIC,
-	raidRuns: Sequelize.NUMERIC,
+    realmName: Sequelize.INTEGER,
+	keyPops: Sequelize.INTEGER,
+	leadRuns: Sequelize.INTEGER,
+	raidRuns: Sequelize.INTEGER,
 });
 
 //vars
