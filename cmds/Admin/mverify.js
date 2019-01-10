@@ -8,7 +8,7 @@ module.exports.run = async (client, msg, args) => {
         const username = args[0];
         member.setNickname(username);
         member.addRole(veriRole)
-        veriConfirm(user.id);
+        veriLog(user.id);
         try {
             const player = await client.db.create({
                 id: user.id,
