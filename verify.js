@@ -5,6 +5,7 @@ const bot = require("./mopBot.js")
 const cverify = require("./currentverifications.json")
 
 module.exports.verify = async (user, server, member, client) => {
+        if (cverify.idlist.contains(user.id)) return (user.send('Please finish the message above!'))
         cverify.idlist.push(user.id)
         cverify.timelist.push(new Date(Date.now()));
         const veriRole = server.roles.get(config.member);
