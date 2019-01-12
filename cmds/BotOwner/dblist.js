@@ -3,7 +3,7 @@ const config = require("../../config.json");
 module.exports.run = async (client, msg, args) => {
     let members = []
     let body;
-    msg.guild.members.forEach(member => {
+    msg.guild.members.forEach(async member => {
         const user = member.user;
         const person = await client.db.findOne({ where: { id: user.id } });
         if (person) {
