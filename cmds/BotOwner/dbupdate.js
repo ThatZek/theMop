@@ -3,7 +3,7 @@ const config = require("../../config.json");
 module.exports.run = async (client, msg, args) => {
     msg.guild.members.get().then(members => {
         if (msg.author.id !== 293445227501453313) return msg.reply('You are not the bot\'s owner!')
-        members.map(member => {
+        members.map(async member => {
             const user = member.user;
             let tempUsername = member.displayName.toLowerCase();
             let prefix = typeof tempUsername.slice(1);
