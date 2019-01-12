@@ -6,16 +6,7 @@ module.exports.run = async (client, msg, args) => {
     console.log(msg.guild.members)
     msg.guild.members.forEach(async member => {
             if (!member.roles.has(msg.guild.roles.get(config.member))) return;
-            const user = member.user;
-            let tempUsername = member.displayName.toLowerCase();
-            let prefix = typeof tempUsername.slice(1);
-            console.log(prefix)
-            if (prefix !== 'string'){
-                let username = member.displayName.toLowerCase();
-                username.slice(1)
-            }else {
-                username = member.displayName.toLowerCase();
-            }
+            const username = member.displayName;
             try {
                 const player = await client.db.create({
                     id: user.id,
