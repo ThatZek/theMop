@@ -4,7 +4,7 @@ const config = require("../../config.json");
 module.exports.run = async (client, msg, args) => {
     const member = msg.mentions.members.first()
     const trl = msg.guild.roles.get(config.leadrole);
-    const rl = msg.guild.roles.get('519587730003460096');
+    const rl = msg.guild.roles.get('518953953686454284');
         if (member) {
             if (member.roles.has(trl.id)) {
                 msg.reply('That person can\'t be trialed!')
