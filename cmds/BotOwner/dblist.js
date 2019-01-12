@@ -1,28 +1,9 @@
 const Discord = require("discord.js");
 const config = require("../../config.json");
 module.exports.run = async (client, msg, args) => {
-    let members = []
-    let body;
-    msg.guild.members.forEach(async member => {
-        const user = member.user;
-        const person = await client.db.findOne({ where: { id: user.id } });
-        if (person) {
-            members.push(person.get('realmName'))
-        }
-        return console.log(`Could not find ID: ${user.id}`);
-    })
-    for (var i = 0; i < members.length; i++) {
-        if (i === 0) {
-            body = members[i]
-        }else {
-            body =body + `\n${members[i]}`
-        }
-    }
-    msg.channel.send({
-        embed: {
-            title: body
-        }
-    })
+    const users = await client.db.findAll({ attributes: ['id'] });
+const tagString = users.map(t => t.name).join(', ') || 'No users set.';
+return msg.channel.send(`List of tags: ${tagString}`);
 }
 module.exports.help = {
     name: 'dblist',

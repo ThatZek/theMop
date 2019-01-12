@@ -24,7 +24,7 @@ module.exports.run = async (client, msg, args) => {
                     raidRuns: 0,
                     vials: 0,
                 });
-                return console.log(`${user.id} was added to the database`)
+                return msg.reply(`${user.id} was added to the database`)
             }
             catch (e) {
                 if (e.name === 'SequelizeUniqueConstraintError') {
