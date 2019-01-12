@@ -71,7 +71,7 @@ client.on('ready', () => {
 client.on('message', msg => {
     const args = msg.content.slice(prefix.length).split(/ +/);
 	const command = args.shift().toLowerCase();
-	if (msg.channel.id === '525168788895825920') {
+	if (msg.channel.id === '494894232524554240') {
     if (msg.content.toLowerCase() === 'verify') {
         if (!msg.member.roles.has(veriRole)) {
 			v.verify(msg.author, msg.guild, msg.member, client)
