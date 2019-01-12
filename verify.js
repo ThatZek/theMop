@@ -64,11 +64,11 @@ module.exports.verify = async (user, server, member, client) => {
     }
 
 function veriLog(user, username, client) {
-    client.channels.get('532751770234126347').send(user + ' was verified successfully! Their Realmeye: https://www.realmeye.com/player/' + username)
+    client.channels.get('521068238583627776').send(user + ' was verified successfully! Their Realmeye: https://www.realmeye.com/player/' + username)
 }
 
 function veriErr(user, username, client) {
-    client.channels.get('532751770234126347').send(user + ' was verified unsuccessfully! Their Realmeye: https://www.realmeye.com/player/' + username)
+    client.channels.get('521068238583627776').send(user + ' was verified unsuccessfully! Their Realmeye: https://www.realmeye.com/player/' + username)
 }
 function veriConfirm(element, client) {
     const index = cverify.idlist.indexOf(element);
