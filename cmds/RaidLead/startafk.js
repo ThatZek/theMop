@@ -46,7 +46,7 @@ module.exports.run = async (client, msg, args) => {
                 embed: {
                     color: 16711680,
                     title: 'CULT AFK STARTING',
-                    description: '<@' + msg.author.id + `> is starting an AFK check!  Join queue then react with ${client.emojis.get(entity)} to join!`
+                    description: '<@' + msg.author.id + `> is starting an AFK check!  Join queue then react with ${client.emojis.get(malus)} to join!`
                 }
             }).then(async msg => {
                 let tempAfk = msg.id;

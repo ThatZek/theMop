@@ -29,7 +29,7 @@ module.exports.run = async (client, msg, args) => {
                 }
                 if (keyArray.length > 0) {
                     for (var i = 0; i < keyArray.length; i++) {
-                        if (i === 1) {
+                        if (i === 0) {
                             keyMsg = '<@' + keyArray[i - 1] + '>'
                         }else {
                         keyMsg = keyMsg + '\n' + '<@' + keyArray[i - 1] + '>'
