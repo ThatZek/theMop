@@ -9,18 +9,18 @@ module.exports.run = async (client, msg, args) => {
     let testRunLead = msg.author.id;
 
     //both
-    const key = '527306552789696532';
-    const knight = '527307396536598550';
-    const pally = '527307396977000458';
-    const priest = '527307396893376516';
-    const warrior = '527307397006491658';
-    const plane = '527307560408186880';
-    const mseal = '527307649537146910';
+    const key = '533684591387607040';
+    const knight = '533684591383543818';
+    const pally = '533684591442001940';
+    const priest = '533684591802974209';
+    const warrior = '533684591463235585';
+    const plane = '533684591630876696';
+    const mseal = '533684591806906368';
 
     //not both
-    const entity = '527306806821912606';
-    const malus = '527306731315789836';
-    const vial = '527306867760693258';
+    const entity = '533684591224160277';
+    const malus = '533684591576481806';
+    const vial = '533684591966421012';
 
 
     //command
