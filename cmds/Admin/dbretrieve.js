@@ -10,9 +10,9 @@ if (dbUser) {
 return message.reply(`Could not find tag: ${tagName}`);
     }
 module.exports.help = {
-    name: 'dbupdate',
+    name: 'dbretrieve',
     role: config.modrole,
-    usage: '',
-    desc: `Updates DB to be relevant`,
-    example: ''
+    usage: '`user`',
+    desc: `Retrieves data on one user`,
+    example: '@That "One" Turtle'
 }
