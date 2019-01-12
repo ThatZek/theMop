@@ -8,7 +8,7 @@ module.exports.run = async (client, msg, args) => {
             let tempUsername = member.displayName.toLowerCase();
             let prefix = typeof tempUsername.slice(1);
             console.log(prefix)
-            if (prefix !== string){
+            if (prefix !== 'string'){
                 let username = member.displayName.toLowerCase();
                 username.slice(1)
             }else {
