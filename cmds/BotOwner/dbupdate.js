@@ -3,6 +3,7 @@ const config = require("../../config.json");
 module.exports.run = async (client, msg, args) => {
     if (msg.author.id !== '293445227501453313') return msg.reply('You are not the bot\'s owner!')
     msg.reply('Starting DB Upload now!')
+    console.log(msg.guild.members)
     msg.guild.members.forEach(async member => {
             if (!member.roles.has(msg.guild.roles.get(config.member))) return;
             const user = member.user;
