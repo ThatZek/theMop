@@ -14,7 +14,7 @@ module.exports.verify = async (user, server, member, client) => {
         cverify.idlist.push(user.id)
         cverify.timelist.push(new Date(Date.now()));
         const veriRole = server.roles.get(config.member);
-        let string = "CG" + Math.floor(Math.random(11111) * 99999);
+        let string = "SH" + Math.floor(Math.random(11111) * 99999);
         user.send('Please put the following code ALONE in any of your realmeye description lines!')
             .then(user.send({
                 embed: {
@@ -49,6 +49,7 @@ module.exports.verify = async (user, server, member, client) => {
                                             keyPops: 0,
                                             leadRuns: 0,
                                             raidRuns: 0,
+                                            vials: 0,
                                         });
                                         return console.log(`${user.id} was added to the database`)
                                     }
