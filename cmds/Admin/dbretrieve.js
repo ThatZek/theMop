@@ -5,9 +5,9 @@ module.exports.run = async (client, msg, args) => {
     const user = msg.mentions.users.first();
 const dbUser = await client.db.findOne({ where: { id: user.id } });
 if (dbUser) {
-    return message.channel.send(`${dbUser.id}, ${dbUser.realmName}`);
+    return msg.channel.send(`${dbUser.id}, ${dbUser.realmName}`);
 }
-return message.reply(`Could not find tag: ${tagName}`);
+return msg.reply(`Could not find tag: ${tagName}`);
     }
 module.exports.help = {
     name: 'dbretrieve',
