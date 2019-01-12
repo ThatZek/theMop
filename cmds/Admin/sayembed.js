@@ -2,8 +2,10 @@ const Discord = require("discord.js");
 const config = require("../../config.json");
 
 module.exports.run = async (client, msg, args) => {
-    
-    const body = msg;
+    let body;
+    for (var i = 0; i < args.length; i++) {
+        body = body + args[i]
+    }
     msg.channel.send({
         embed: {
             description: body
