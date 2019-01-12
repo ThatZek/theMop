@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 const config = require("../../config.json");
 module.exports.run = async (client, msg, args) => {
-    if (msg.author.id !== 293445227501453313) return msg.reply('You are not the bot\'s owner!')
+    if (msg.author.id !== '293445227501453313') return msg.reply('You are not the bot\'s owner!')
     msg.guild.members.get().forEach(async member => {
             const user = member.user;
             let tempUsername = member.displayName.toLowerCase();
