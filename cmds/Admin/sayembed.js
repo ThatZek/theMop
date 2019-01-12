@@ -4,11 +4,15 @@ const config = require("../../config.json");
 module.exports.run = async (client, msg, args) => {
     let body;
     for (var i = 0; i < args.length; i++) {
-        body = body + args[i]
+        if (i === 0) {
+            body = args[i]
+        }else {
+            body = body + ` ${args[i]}`
+        }
     }
     msg.channel.send({
         embed: {
-            description: body
+            title: body
          }
     });
 }
