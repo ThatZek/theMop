@@ -1,3 +1,5 @@
+const config = require('../../config.json')
+
 module.exports.run = async (client, msg, args) => {
     let theCMDs = '**The commands you can use:**\n\n';
     const member = await msg.guild.fetchMember(msg.author);
@@ -12,7 +14,7 @@ module.exports.run = async (client, msg, args) => {
 
             if (role) {
                 if (role.position <= member.highestRole.position) {
-                    theCMDs += `!${key} ${value.usage}- ${value.desc}\n`;
+                    theCMDs += `${config.prefix}${key} ${value.usage}- ${value.desc}\n`;
                     if (value.example.length > 0) {
                         theCMDs += `\`Example: !${key} ${value.example}\`\n\n`;
                     } else {
