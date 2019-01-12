@@ -9,7 +9,7 @@ module.exports.run = async (client, msg, args) => {
         if (person) {
             members.push(person.get('realmName'))
         }
-        return message.reply(`Could not find tag: ${tagName}`);
+        return config.log(`Could not find tag: ${tagName}`);
     })
     for (var i = 0; i < members.length; i++) {
         if (i === 0) {
