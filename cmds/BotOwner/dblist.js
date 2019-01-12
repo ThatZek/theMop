@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 const config = require("../../config.json");
 module.exports.run = async (client, msg, args) => {
     const users = await client.db.findAll({ attributes: ['id'] });
-const tagString = users.map(t => t.realmName).join(', ') || 'No users set.';
+const tagString = users.map(user => user.id).join(', ') || 'No users set.';
 return msg.channel.send(`List of tags: ${tagString}`);
 }
 module.exports.help = {
