@@ -103,5 +103,8 @@ if (!msg.content.startsWith(config.prefix)) return;
         //msg.react('✅');
 	}
 });
+client.on("error", error => {
+	client.log(error)
+});
 
 client.login(config.token)
